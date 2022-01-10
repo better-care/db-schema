@@ -1,5 +1,13 @@
 # Better DB Schema Management implementation guidelines (DB schema initialization)
 
+## Licence
+[![License](https://img.shields.io/badge/license-apache%202.0-60C060.svg)](https://choosealicense.com/licenses/apache-2.0/)
+
+## Release
+
+[![Release Artifacts](https://maven-badges.herokuapp.com/maven-central/care.better.schema/db-schema/badge.svg)](https://search.maven.org/artifact/care.better.schema/db-schema)
+
+
 Usage with maven dependency:
 
 ```xml
