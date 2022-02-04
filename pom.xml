@@ -4,7 +4,7 @@
 
     <groupId>care.better.schema</groupId>
     <artifactId>db-schema</artifactId>
-    <version>2.1.1-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
@@ -12,29 +12,31 @@
     <url>https://github.com/better-care/db-schema</url>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
+        <java.version>16</java.version>
+
+        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-io.version>2.11.0</commons-io.version>
+        <gauva.version>31.1-jre</gauva.version>
+        <hibernate.version>5.6.5.Final</hibernate.version>
+        <javassist.version>3.29.2-GA</javassist.version>
+        <jboss-logging.version>3.5.0.Final</jboss-logging.version>
+        <reflections.version>0.10.2</reflections.version>
+        <slf4j.version>2.0.2</slf4j.version>
+
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-        <hibernate.version>5.4.30.Final</hibernate.version>
-        <commons-io.version>2.6</commons-io.version>
-        <commons-lang.version>3.10</commons-lang.version>
-        <slf4j.version>1.7.30</slf4j.version>
-        <jboss-logging.version>3.4.1.Final</jboss-logging.version>
-        <reflections.version>0.9.12</reflections.version>
-        <gauva.version>29.0-jre</gauva.version>
-        <javassist.version>3.24.0-GA</javassist.version>
-
         <maven-enforcer-plugin.version>3.0.0</maven-enforcer-plugin.version>
-        <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
-        <versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+        <maven-dependency-plugin.version>3.3.0</maven-dependency-plugin.version>
+        <maven-versions-plugin.version>2.12.0</maven-versions-plugin.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.8</nexus-staging-maven-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
-        <maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencyManagement>
@@ -56,7 +58,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang.version}</version>
+                <version>${commons-lang3.version}</version>
             </dependency>
 
             <!-- logging -->
@@ -138,7 +140,6 @@
     </dependencies>
 
     <build>
-        <!-- Override parent BOM plugin configurations -->
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -163,7 +164,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>${versions-maven-plugin.version}</version>
+                <version>${maven-versions-plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -176,6 +177,9 @@
                         <configuration>
                             <rules>
                                 <dependencyConvergence />
+                                <requireMavenVersion>
+                                    <version>[3.6.2,)</version> <!-- https://issues.apache.org/jira/browse/MNG-6506 -->
+                                </requireMavenVersion>
                             </rules>
                         </configuration>
                         <goals>
