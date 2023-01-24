@@ -292,16 +292,16 @@ public class SchemaInitializerImpl implements SchemaInitializer {
     protected boolean tableExists(Connection connection, String tableName) throws SQLException {
         DatabaseMetaData metaData = connection.getMetaData();
         boolean exists;
-        try (ResultSet tableExists = metaData.getTables(null, null, tableName, null)) {
+        try (ResultSet tableExists = metaData.getTables(null, dialectScriptsDirectory.endsWith("ora") ? connection.getSchema() : null, tableName, null)) {
             exists = tableExists.next();
         }
         if (!exists) {
-            try (ResultSet tableExists = metaData.getTables(null, null, tableName.toLowerCase(), null)) {
+            try (ResultSet tableExists = metaData.getTables(null, dialectScriptsDirectory.endsWith("ora") ? connection.getSchema() : null, tableName.toLowerCase(), null)) {
                 exists = tableExists.next();
             }
         }
         if (!exists) {
-            try (ResultSet tableExists = metaData.getTables(null, null, tableName.toUpperCase(), null)) {
+            try (ResultSet tableExists = metaData.getTables(null, dialectScriptsDirectory.endsWith("ora") ? connection.getSchema() : null, tableName.toUpperCase(), null)) {
                 exists = tableExists.next();
             }
         }
