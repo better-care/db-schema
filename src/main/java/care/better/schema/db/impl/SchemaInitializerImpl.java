@@ -29,7 +29,7 @@ public class SchemaInitializerImpl implements SchemaInitializer {
     private static final Logger log = LoggerFactory.getLogger(SchemaInitializerImpl.class);
 
     private static final String DEPRECATED_DB_UPGRADES_PACKAGE = "com.marand.thinkehr.db.upgrade.impl.";
-    private static final String DB_UPGRADES_PACKAGE = "care.better.schema.db.upgrade.impl";
+    private static final String DB_UPGRADES_PACKAGE = "care.better.schema.db.upgrade.impl.";
     private static final String SCHEMA_DIRECTORY = "/schema";
     private static final String SCRIPTS_DIRECTORY = "/schema/upgrades";
     private static final String ADDITIONAL_DIRECTORY = "/schema/additional";
