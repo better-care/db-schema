@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 3.0.0 - 2024-02-15
+
+- Java 17 supported and required
+
 ## 2.1.2 - 2023-01-25
 
 - Fix an issue that upgrade with java classes failed when care.better.schema.db.upgrade.impl package was used 
